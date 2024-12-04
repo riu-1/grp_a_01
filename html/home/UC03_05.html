@@ -1,0 +1,292 @@
+<!--基本情報の入力-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMC カーシェア</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        h1 {
+            color: red;
+            margin: 0;
+        }
+        .step-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .step {
+            position: relative;
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            margin-right: 15px;
+            text-align: center;
+            z-index: 1;
+            width: 120px;
+        }
+        .step.credit {
+            background-color: yellow; /* 現在のステップの背景色 */
+            font-weight: bold;
+        }
+        .form-container {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            padding: 5px; /* 内側の余白 */
+            border-radius: 3px; /* 角を丸める */
+        }
+        .form-group label {
+            display: block; /* ラベルをブロック要素に */
+            margin-bottom: 10px;
+            background-color: #87CEFA; /* 薄い青 */
+            padding: 10px; /* 内側の余白 */
+            border-radius: 3px; /* 角を丸める */
+        }
+        .required {
+            color: white; /* 必須の文字の文字色 */
+            background-color: orange; /* 必須の文字の背景色 */
+            padding: 3px 5px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        .highlight {
+            color: red; /* "全角"の文字色 */
+        }
+        .highlight2{
+            color:red;
+            margin-bottom: 10px;
+        }
+        .input-container {
+            display: flex; /* フレックスボックスを使用 */
+            gap: 15px; /* 入力ボックス間のスペース */
+            margin-bottom: 10px;
+        }
+        .input-container input {
+            width: calc(50% - 7.5px); /* 幅を50%に設定 */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: flex-end; /* ボタンを右端に配置 */
+            margin-top: 20px;
+        }
+        .rogin {
+            padding: 10px 15px;
+            background-color: yellow; /* ボタンの背景色 */
+            color: black; /* ボタンの文字色 */
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .radio-group {
+            margin: 10px 0; /* ラジオボタンのマージン */
+        }
+        .select-container {
+            display: flex; /* フレックスボックスを使用 */
+            gap: 10px; /* セレクトボックス間のスペース */
+        }
+        .select-container select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .box{
+            border: 2px solid black; /* 枠線のスタイル */
+            padding: 10px; /* 内側の余白 */
+            width: 1000px; /* 幅 */  
+        }
+        .button-container{
+            display:flex;
+            gap: 10px;
+
+        }
+        input[type="button"] {
+            background-color: orange; /* ボタンの背景色をオレンジに */
+            color: black; /* 文字色を白に */
+            border: none; /* ボタンの枠線をなしに */
+            padding: 10px 20px; /* ボタンの内側の余白 */
+            cursor: pointer; /* カーソルをポインターに */
+            border-radius: 5px; /* ボタンの角を丸くする */
+        }
+        input[type="button"]:hover {
+            background-color: darkorange; /* ホバー時の色を変更 */
+        }
+        form[tyoe="text"] {
+            margin: 20px;
+        }
+        .warning {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: flex-end; /* ボタンを右端に配置 */
+            margin-top: 20px;
+            gap: 10px; /* ボタン間のスペース */
+        }
+        /* 既存のボタンスタイルを削除または変更 */
+        .button, .confirmButton {
+            padding: 10px 20px; /* パディングを統一 */
+            background-color: orange; /* オレンジ色に設定 */
+            color: black; /* 文字色を黒に設定 */
+            border: none; /* 枠線をなしに */
+            border-radius: 5px; /* 角を丸くする */
+            cursor: pointer; /* カーソルをポインターに */
+            font-weight: bold; /* 太字にする */
+            width: 200px; /* 幅を統一 */
+        }
+
+        .confirmButton:disabled {
+            background-color: #ccc; /* 無効時の背景色 */
+            cursor: not-allowed; /* 無効時のカーソル */
+        }
+
+    </style>
+    <script>
+       function toggleButton() {
+            const checkbox = document.getElementById('myCheckbox');
+            const button = document.getElementById('confirmButton');
+            button.disabled = !checkbox.checked;
+
+            // チェックが入っている場合、オレンジ色のスタイルを適用
+            if (checkbox.checked) {
+                button.style.backgroundColor = 'orange';;
+            } else {
+                button.style.backgroundColor = ''; // デフォルトの色に戻す
+                button.style.color = ''; // デフォルトの文字色に戻す
+            }
+        }
+
+        function confirmAction() {
+            // 遷移先のURLを指定します
+            window.location.href = 'UC03_08.html';
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../img/rog .png" alt="TMC Logo">
+            <h1>TMC カーシェア</h1>
+        </div>
+        <a href="#" class="rogin">予約・ログイン ▶</a>
+    </header>
+
+    <div class="step-container">
+        <div class="step">
+            <div class="step-icon">📝</div>
+            <div class="step-label">詳細・規約のご確認</div>
+        </div>
+        <div class="step current">
+            <div class="step-icon">🖊️</div>
+            <div class="step-label">基本情報のご入力</div> 
+        </div>
+        <div class="step confirmation">
+            <div class="step-icon">🔍</div>
+            <div class="step-label">ご入力基本情報のご確認</div>
+        </div>
+        <div class="step credit">
+            <div class="step-icon">💳</div>
+            <div class="step-label">クレジットカード情報</div>
+        </div>
+        <div class="step">
+            <div class="step-icon">✅</div>
+            <div class="step-label">申し込み完了</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="credit_number">
+            <span class="required">必須</span>クレジットカード番号<span class="highlight"> ※半角数字、ハイフンなし</span>
+        </label>
+        <input type="text"id="password"placeholder="例:mypassword1234"required><br><br>
+        <span class="highlight2"> 注意:ご登録は、お申込ご本人名義のクレジットカードに限ります。</span><br>
+        VISA・JCB・AMEX・MASTER・DINERS・EPOSの6ブランドがご利用いただけます。
+        <label for="credit_date">
+            <span class="required">必須</span>有効期限
+        </label>
+        <div class="select-container">
+            <select id="year" required>
+                <option value="">年</option>
+                <option value="2025">2025年</option>
+                <option value="2026">2026年</option>
+                <option value="2027">2027年</option>
+                <option value="2028">2028年</option>
+                <option value="2029">2029年</option>
+                <option value="2030">2030年</option>
+                <option value="2031">2031年</option>
+            </select>
+            <select id="month" required>
+                <option value="">月</option>
+                <option value="1">1月</option>
+                <option value="2">2月</option>
+                <option value="3">3月</option>
+                <option value="4">4月</option>
+                <option value="5">5月</option>
+                <option value="6">6月</option>
+                <option value="7">7月</option>
+                <option value="8">8月</option>
+                <option value="9">9月</option>
+                <option value="10">10月</option>
+                <option value="11">11月</option>
+                <option value="12">12月</option>
+            </select>
+        </div>
+        <br>
+        <label for="security">
+            <span class="required">必須</span>クレジットカード番号<span class="highlight"> ※半角数字</span>
+        </label>
+        <input type="text"id="password"placeholder="例:012"required>
+        <div class="warning">
+            <input type="checkbox" id="myCheckbox" onclick="toggleButton()">入力内容をご確認いただき、誤りがない場合はチェックをつけてください。<br>
+            ※チェックが入っていない場合、変更を確定できません。
+        </div>
+        <div class="btn container">
+            <input type="button" id="modoru" value="ご登録情報の確認に戻る" onclick="location.href='UC03_03.html'">
+            <button id="confirmButton" class="confirmbutton" disabled onclick="confirmAction()">確定</button>
+        </div>
+
+    </div>
+</body>
+</html>
