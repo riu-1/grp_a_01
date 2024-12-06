@@ -1,0 +1,77 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    position: relative;
+}
+img {
+    height: 50px; /* ロゴのサイズ調整 */
+    margin-right: 10px;
+}
+h1 {
+    color: red;
+    margin: 0;
+}
+.global-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 2px solid white; /* 白い枠線 */
+    border-radius: 5px; /* 角を丸める */
+    background-color: black;
+}
+.global-nav button {
+    background-color: black;
+    color: white;
+    border: 2px solid white; /* ボタンの枠線 */
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 5px; /* ボタンの角を丸める */
+    flex: 1; /* ボタンを均等に配置 */
+    transition: background-color 0.3s; /* ホバー時の効果 */
+}
+.global-nav button:hover {
+    background-color: #444; /* ホバー時の色 */
+}
+.login-buttons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.login-buttons button {
+    margin-left: 5px;
+}
+.login-buttons .login {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px; /* ボタンの角を丸める */
+}
+.login-buttons .member {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px; /* ボタンの角を丸める */
+}
+section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
