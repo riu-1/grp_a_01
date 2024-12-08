@@ -126,9 +126,9 @@ ul {
     list-style-type: disc;
     margin-left: 20px;
 }
-.login-button .login{
+.login-buttons .login{
     background-color: yellow;
-    color: white;
+    color: black;
     border: none;
     padding: 10px;
     border-radius: 5px; /* ボタンの角を丸める */
