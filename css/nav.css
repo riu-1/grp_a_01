@@ -92,3 +92,6 @@ header h1 {
     right: 20px; /* 右からの距離 */
     top: 10px; /* 上からの距離 */
 }
+.nav-item.active a {
+    background-color: #444; /* アクティブなアイテムの背景色 */
+}
