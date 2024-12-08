@@ -8,7 +8,7 @@
     <title>TMC カーシェア</title>
     <link rel="stylesheet" href="../../CSS/top.css">
     <link rel="stylesheet" href="../../CSS/price.css">
-    <link rel="stylesheet" href="../../CSS/useprice.css">
+    <link rel="stylesheet" href="../../CSS/comprice.css">
 </head>
 <body>
 
@@ -17,16 +17,17 @@
     <h1>TMC カーシェア</h1>
     <div class="login-buttons">
         <button class="member" onclick="location.href='nyuukai.html'" >会員登録申請はこちら</button>
-        <button class="login">予約・ログイン ▶</button>
+        <button class="login" onclick="location.href='/login/'">ログアウト</button>
     </div>
 </header>
-
-<div class="global-nav">
-    <button>ステーション検索</button>
-    <button onclick="location.href='P39.html'">料金</button>
-    <button>利用方法</button>
-    <button>車両</button>
-</div>
+    <nav class="nav">
+        <ul>
+            <li class="nav-item gnav02"><a href="/fare/">ステーション検索</a></li>
+            <li class="nav-item gnav03"><a href="../../html/home/P40.html">料金</a></li>
+            <li class="nav-item gnav04"><a href="../../html/home/P43.html">ご利用方法</a></li>
+            <li class="nav-item gnav05"><a href="../../html/home/P46.html">車種</a></li>
+        </ul>
+    </nav>
 
 <div class="container">
     <div class="sidebar">
